@@ -14,18 +14,16 @@ def main():
 
         user_input = input("\nTu solicitud: ")
 
-        if user_input.lower() in ["salir", "exit", "quit"]:
-            print("\nHasta luego.")
+        if user_input.lower() == "salir":
             break
 
-        try:
+        print("\nProcesando consulta...\n")
 
-            response = chatbot.process_user_input(user_input)
+        response = chatbot.process_user_input(user_input)
 
-            print("\nPublicación generada:\n")
-            print(response)
+        print("\nPublicación generada:\n")
+        print(response)
 
-        except Exception as e:
 
-            print("\nError al procesar la solicitud:")
-            print(e)
+if __name__ == "__main__":
+    main()
