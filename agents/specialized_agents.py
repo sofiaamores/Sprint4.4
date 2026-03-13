@@ -1,5 +1,11 @@
 from agents import Agent
+from pydantic import BaseModel
 
+class LinkedInPost(BaseModel):
+    title: str
+    content: str
+    hashtags: list[str]
+    category: str
 
 COMMON_INSTRUCTIONS = """
 Eres un generador experto de publicaciones para LinkedIn.
@@ -23,12 +29,16 @@ Reglas:
 
 marketing_agent = Agent(
     name="MarketingAgent",
-    instructions=COMMON_INSTRUCTIONS + """
-Especialízate en publicaciones sobre marketing, branding, ventas, estrategia digital,
-redes sociales, captación de clientes y crecimiento de negocio.
+    instructions="""
+Genera una publicación de LinkedIn sobre marketing.
 
-La categoría debe ser siempre: Marketing
+Debe incluir:
+- título atractivo
+- contenido profesional
+- hashtags relevantes
+- categoría Marketing
 """,
+    output_type=LinkedInPost
 )
 
 
@@ -40,6 +50,7 @@ automatización, datos, buenas prácticas de desarrollo y tecnología.
 
 La categoría debe ser siempre: Programación
 """,
+    output_type=LinkedInPost
 )
 
 
@@ -51,4 +62,5 @@ protección de datos, contratos, regulación tecnológica y riesgo legal.
 
 La categoría debe ser siempre: Jurídico-Legal
 """,
+    output_type=LinkedInPost
 )
