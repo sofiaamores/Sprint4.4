@@ -15,5 +15,9 @@ class ConversationManager:
     def get_history(self):
         return self.history
 
+    def show_history(self):
+    for msg in self.history:
+        print(f"{msg['role']}: {msg['content']}")
+
     def clear(self):
         self.history = []
